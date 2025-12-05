@@ -156,4 +156,3 @@ void printPemain(ListPemain L) {
         P = P->next;
     }
 }
-

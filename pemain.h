@@ -32,6 +32,7 @@ void deleteAfterPemain(ListPemain &L, adrPemain prec, adrPemain &P);
 
 void deletePemainByID(ListPemain &L, string id);
 adrPemain findPemain(ListPemain L, string id);
+
 void printPemain(ListPemain L);
 
 #endif
