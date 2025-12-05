@@ -2,12 +2,12 @@
 #include <iostream>
 using namespace std;
 
-void createListPemain_103012400217(ListPemain &L) {
+void createListPemain(ListPemain &L) {
     L.first = nullptr;
     L.last = nullptr;
 }
 
-adrPemain createElmPemain_103012400217(string id, string nama, int score) {
+adrPemain createElmPemain(string id, string nama, int score) {
     adrPemain P = new pemain;
     P->idPemain = id;
     P->nama = nama;
@@ -17,7 +17,7 @@ adrPemain createElmPemain_103012400217(string id, string nama, int score) {
     return P;
 }
 
-void insertFirstPemain_103012400217(ListPemain &L, adrPemain P) {
+void insertFirstPemain(ListPemain &L, adrPemain P) {
     if (L.first == nullptr) {
         L.first = P;
         L.last = P;
@@ -28,7 +28,7 @@ void insertFirstPemain_103012400217(ListPemain &L, adrPemain P) {
     }
 }
 
-void insertLastPemain_103012400217(ListPemain &L, adrPemain P) {
+void insertLastPemain(ListPemain &L, adrPemain P) {
     if (L.first == nullptr) {
         L.first = P;
         L.last = P;
@@ -39,10 +39,28 @@ void insertLastPemain_103012400217(ListPemain &L, adrPemain P) {
     }
 }
 
-void deleteFirstPemain_103012400217(ListPemain &L) {
-    if (L.first == nullptr) return;
+void insertAfterPemain(ListPemain &L, adrPemain prec, adrPemain P) {
+    if (prec == nullptr) return;
 
-    adrPemain P = L.first;
+    P->next = prec->next;
+    P->prev = prec;
+
+    if (prec->next != nullptr)
+        prec->next->prev = P;
+    else
+        L.last = P;
+
+    prec->next = P;
+}
+
+void deleteFirstPemain(ListPemain &L, adrPemain &P) {
+    if (L.first == nullptr) {
+        P = nullptr;
+        return;
+    }
+
+    P = L.first;
+
     if (L.first == L.last) {
         L.first = nullptr;
         L.last = nullptr;
@@ -50,13 +68,19 @@ void deleteFirstPemain_103012400217(ListPemain &L) {
         L.first = P->next;
         L.first->prev = nullptr;
     }
-    delete P;
+
+    P->next = nullptr;
+    P->prev = nullptr;
 }
 
-void deleteLastPemain_103012400217(ListPemain &L) {
-    if (L.first == nullptr) return;
+void deleteLastPemain(ListPemain &L, adrPemain &P) {
+    if (L.first == nullptr) {
+        P = nullptr;
+        return;
+    }
 
-    adrPemain P = L.last;
+    P = L.last;
+
     if (L.first == L.last) {
         L.first = nullptr;
         L.last = nullptr;
@@ -64,46 +88,72 @@ void deleteLastPemain_103012400217(ListPemain &L) {
         L.last = P->prev;
         L.last->next = nullptr;
     }
-    delete P;
+
+    P->next = nullptr;
+    P->prev = nullptr;
 }
 
-void deletePemainByID_103012400217(ListPemain &L, string id) {
-    adrPemain P = findPemain_103012400217(L, id);
+void deleteAfterPemain(ListPemain &L, adrPemain prec, adrPemain &P) {
+    if (prec == nullptr || prec->next == nullptr) {
+        P = nullptr;
+        return;
+    }
+
+    P = prec->next;
+
+    prec->next = P->next;
+    if (P->next != nullptr)
+        P->next->prev = prec;
+    else
+        L.last = prec;
+
+    P->next = nullptr;
+    P->prev = nullptr;
+}
+
+void deletePemainByID(ListPemain &L, string id) {
+    adrPemain P = L.first;
+
+    while (P != nullptr && P->idPemain != id) {
+        P = P->next;
+    }
+
     if (P == nullptr) return;
 
-    if (P == L.first) {
-        deleteFirstPemain_103012400217(L);
-    }
-    else if (P == L.last) {
-        deleteLastPemain_103012400217(L);
-    }
-    else {
-        P->prev->next = P->next;
-        P->next->prev = P->prev;
-        delete P;
-    }
+    adrPemain temp;
+
+    if (P == L.first)
+        deleteFirstPemain(L, temp);
+    else if (P == L.last)
+        deleteLastPemain(L, temp);
+    else
+        deleteAfterPemain(L, P->prev, temp);
+
+    delete temp;
 }
 
-adrPemain findPemain_103012400217(ListPemain L, string id) {
-    adrPemain Q = L.first;
-    while (Q != nullptr) {
-        if (Q->idPemain == id) return Q;
-        Q = Q->next;
+adrPemain findPemain(ListPemain L, string id) {
+    adrPemain P = L.first;
+    while (P != nullptr) {
+        if (P->idPemain == id) return P;
+        P = P->next;
     }
     return nullptr;
 }
 
-void printPemain_103012400217(ListPemain L) {
+void printPemain(ListPemain L) {
     if (L.first == nullptr) {
         cout << "List Kosong" << endl;
         return;
     }
-    adrPemain Q = L.first;
-    while (Q != nullptr) {
-        cout << "ID: " << Q->idPemain << endl;
-        cout << "Nama: " << Q->nama << endl;
-        cout << "Score: " << Q->score << endl;
-        cout << "------------------" << endl;
-        Q = Q->next;
+
+    adrPemain P = L.first;
+    while (P != nullptr) {
+        cout << "ID: " << P->idPemain << endl;
+        cout << "Nama: " << P->nama << endl;
+        cout << "Score: " << P->score << endl;
+        cout << "-----" << endl;
+        P = P->next;
     }
 }
+
