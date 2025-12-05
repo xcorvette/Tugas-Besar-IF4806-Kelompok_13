@@ -4,6 +4,7 @@ using namespace std;
 
 void createListPemain_103012400217(ListPemain &L) {
     L.first = nullptr;
+    L.last = nullptr;
 }
 
 adrPemain createElmPemain_103012400217(string id, string nama, int score) {
@@ -12,66 +13,73 @@ adrPemain createElmPemain_103012400217(string id, string nama, int score) {
     P->nama = nama;
     P->score = score;
     P->next = nullptr;
+    P->prev = nullptr;
     return P;
 }
 
 void insertFirstPemain_103012400217(ListPemain &L, adrPemain P) {
-    P->next = L.first;
-    L.first = P;
+    if (L.first == nullptr) {
+        L.first = P;
+        L.last = P;
+    } else {
+        P->next = L.first;
+        L.first->prev = P;
+        L.first = P;
+    }
 }
 
 void insertLastPemain_103012400217(ListPemain &L, adrPemain P) {
     if (L.first == nullptr) {
         L.first = P;
+        L.last = P;
     } else {
-        adrPemain Q = L.first;
-        while (Q->next != nullptr) {
-            Q = Q->next;
-        }
-        Q->next = P;
+        L.last->next = P;
+        P->prev = L.last;
+        L.last = P;
     }
 }
 
 void deleteFirstPemain_103012400217(ListPemain &L) {
-    if (L.first != nullptr) {
-        adrPemain P = L.first;
+    if (L.first == nullptr) return;
+
+    adrPemain P = L.first;
+    if (L.first == L.last) {
+        L.first = nullptr;
+        L.last = nullptr;
+    } else {
         L.first = P->next;
-        delete P;
+        L.first->prev = nullptr;
     }
+    delete P;
 }
 
 void deleteLastPemain_103012400217(ListPemain &L) {
-    if (L.first != nullptr) {
-        if (L.first->next == nullptr) {
-            delete L.first;
-            L.first = nullptr;
-        } else {
-            adrPemain Q = L.first;
-            while (Q->next->next != nullptr) {
-                Q = Q->next;
-            }
-            delete Q->next;
-            Q->next = nullptr;
-        }
+    if (L.first == nullptr) return;
+
+    adrPemain P = L.last;
+    if (L.first == L.last) {
+        L.first = nullptr;
+        L.last = nullptr;
+    } else {
+        L.last = P->prev;
+        L.last->next = nullptr;
     }
+    delete P;
 }
 
 void deletePemainByID_103012400217(ListPemain &L, string id) {
-    if (L.first == nullptr) return;
+    adrPemain P = findPemain_103012400217(L, id);
+    if (P == nullptr) return;
 
-    if (L.first->idPemain == id) {
+    if (P == L.first) {
         deleteFirstPemain_103012400217(L);
-        return;
     }
-
-    adrPemain Q = L.first;
-    while (Q->next != nullptr && Q->next->idPemain != id) {
-        Q = Q->next;
+    else if (P == L.last) {
+        deleteLastPemain_103012400217(L);
     }
-
-    if (Q->next != nullptr) {
-        adrPemain P = Q->next;
-        Q->next = P->next;
+    else {
+        P->prev->next = P->next;
+        P->next->prev = P->prev;
         delete P;
     }
 }
@@ -95,6 +103,7 @@ void printPemain_103012400217(ListPemain L) {
         cout << "ID: " << Q->idPemain << endl;
         cout << "Nama: " << Q->nama << endl;
         cout << "Score: " << Q->score << endl;
+        cout << "------------------" << endl;
         Q = Q->next;
     }
 }
