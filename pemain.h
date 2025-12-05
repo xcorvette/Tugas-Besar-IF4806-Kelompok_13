@@ -16,19 +16,23 @@ struct pemain {
 
 struct ListPemain {
     adrPemain first;
+    adrPemain last;
 };
 
-// FUNCTION PROTOTYPES
 void createListPemain(ListPemain &L);
 adrPemain createElmPemain(string id, string nama, int score);
+
 void insertFirstPemain(ListPemain &L, adrPemain P);
 void insertLastPemain(ListPemain &L, adrPemain P);
 void insertAfterPemain(ListPemain &L, adrPemain prec, adrPemain P);
+
 void deleteFirstPemain(ListPemain &L, adrPemain &P);
 void deleteLastPemain(ListPemain &L, adrPemain &P);
 void deleteAfterPemain(ListPemain &L, adrPemain prec, adrPemain &P);
+
 void deletePemainByID(ListPemain &L, string id);
 adrPemain findPemain(ListPemain L, string id);
+
 void printPemain(ListPemain L);
 
 #endif

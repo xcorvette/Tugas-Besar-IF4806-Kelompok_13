@@ -4,7 +4,9 @@ using namespace std;
 
 void createListPemain(ListPemain &L) {
     L.first = nullptr;
+    L.last = nullptr;
 }
+
 adrPemain createElmPemain(string id, string nama, int score) {
     adrPemain P = new pemain;
     P->idPemain = id;
@@ -14,111 +16,143 @@ adrPemain createElmPemain(string id, string nama, int score) {
     P->prev = nullptr;
     return P;
 }
+
 void insertFirstPemain(ListPemain &L, adrPemain P) {
-    if (L.first == nullptr){
+    if (L.first == nullptr) {
         L.first = P;
-    }else{
+        L.last = P;
+    } else {
         P->next = L.first;
         L.first->prev = P;
         L.first = P;
     }
 }
+
 void insertLastPemain(ListPemain &L, adrPemain P) {
     if (L.first == nullptr) {
         L.first = P;
+        L.last = P;
     } else {
-        adrPemain Q = L.first;
-        while (Q->next != nullptr) {
-            Q = Q->next;
-        }
-        Q->next = P;
-        P->prev = Q;
+        L.last->next = P;
+        P->prev = L.last;
+        L.last = P;
     }
 }
+
+void insertAfterPemain(ListPemain &L, adrPemain prec, adrPemain P) {
+    if (prec == nullptr) return;
+
+    P->next = prec->next;
+    P->prev = prec;
+
+    if (prec->next != nullptr)
+        prec->next->prev = P;
+    else
+        L.last = P;
+
+    prec->next = P;
+}
+
 void deleteFirstPemain(ListPemain &L, adrPemain &P) {
-    if (L.first == nullptr) { // jika list kosong
+    if (L.first == nullptr) {
         P = nullptr;
-        cout<<"List Kosong"<<endl;
-    } else if (L.first->next == nullptr){
-        // jika ada 1 elemen
-        P = L.first;
+        return;
+    }
+
+    P = L.first;
+
+    if (L.first == L.last) {
         L.first = nullptr;
-        P->next = nullptr;
-        P->prev = nullptr;
-    } else { // jika lebih dari 1 elemen
-        P = L.first;
+        L.last = nullptr;
+    } else {
         L.first = P->next;
         L.first->prev = nullptr;
-        P->next = nullptr;
-        P->prev = nullptr;
     }
+
+    P->next = nullptr;
+    P->prev = nullptr;
 }
+
 void deleteLastPemain(ListPemain &L, adrPemain &P) {
-    if(L.first == nullptr) { // jika list kosong
+    if (L.first == nullptr) {
         P = nullptr;
-        cout<<"List Kosong"<<endl;
-    } else if (L.first->next == nullptr){
-        // jika ada 1 elemen
-        P = L.first;
+        return;
+    }
+
+    P = L.last;
+
+    if (L.first == L.last) {
         L.first = nullptr;
-        P->next = nullptr;
-        P->prev = nullptr;
-    } else { // jika lebih dari 1 elemen
-        adrPemain Q = L.first;
-        while (Q->next->next != nullptr) {
-            Q = Q->next;
-        }
-        P = Q->next;
-        Q->next = nullptr;
-        P->prev = nullptr;
+        L.last = nullptr;
+    } else {
+        L.last = P->prev;
+        L.last->next = nullptr;
     }
+
+    P->next = nullptr;
+    P->prev = nullptr;
 }
+
+void deleteAfterPemain(ListPemain &L, adrPemain prec, adrPemain &P) {
+    if (prec == nullptr || prec->next == nullptr) {
+        P = nullptr;
+        return;
+    }
+
+    P = prec->next;
+
+    prec->next = P->next;
+    if (P->next != nullptr)
+        P->next->prev = prec;
+    else
+        L.last = prec;
+
+    P->next = nullptr;
+    P->prev = nullptr;
+}
+
 void deletePemainByID(ListPemain &L, string id) {
-    if (L.first == nullptr){
-        return;
+    adrPemain P = L.first;
+
+    while (P != nullptr && P->idPemain != id) {
+        P = P->next;
     }
-    adrPemain P = nullptr;
-    if (L.first->idPemain == id) {
-        deleteFirstPemain(L, P);
-        if (P != nullptr) {
-            delete P;
-        }
-        return;
-    }
-    adrPemain Q = L.first;
-    while (Q->next != nullptr && Q->next->idPemain != id) {
-        Q = Q->next;
-    }
-    if (Q->next != nullptr) {
-        adrPemain R = Q->next;
-        Q->next = R->next;
-        if (R->next != nullptr) {
-            R->next->prev = Q;
-        }
-        R->next = nullptr;
-        R->prev = nullptr;
-        delete R;
-    }
+
+    if (P == nullptr) return;
+
+    adrPemain temp;
+
+    if (P == L.first)
+        deleteFirstPemain(L, temp);
+    else if (P == L.last)
+        deleteLastPemain(L, temp);
+    else
+        deleteAfterPemain(L, P->prev, temp);
+
+    delete temp;
 }
+
 adrPemain findPemain(ListPemain L, string id) {
-    adrPemain Q = L.first;
-    while (Q != nullptr) {
-        if (Q->idPemain == id) return Q;
-        Q = Q->next;
+    adrPemain P = L.first;
+    while (P != nullptr) {
+        if (P->idPemain == id) return P;
+        P = P->next;
     }
     return nullptr;
 }
+
 void printPemain(ListPemain L) {
     if (L.first == nullptr) {
         cout << "List Kosong" << endl;
         return;
     }
-    adrPemain Q = L.first;
-    cout << "--- Daftar Pemain ---" << endl;
-    while (Q != nullptr) {
-        cout << "ID: " << Q->idPemain << endl;
-        cout << "Nama: " << Q->nama << endl;
-        cout << "Score: " << Q->score << endl;
-        Q = Q->next;
+
+    adrPemain P = L.first;
+    while (P != nullptr) {
+        cout << "ID: " << P->idPemain << endl;
+        cout << "Nama: " << P->nama << endl;
+        cout << "Score: " << P->score << endl;
+        cout << "-----" << endl;
+        P = P->next;
     }
 }
