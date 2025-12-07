@@ -1,18 +1,22 @@
 # depslib dependency file v1.0
-1763945139 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\main.cpp
+1765101678 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\main.cpp
 	<iostream>
 
-1764841692 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\pemain_103012400217.cpp
-	"pemain.h"
+1765099019 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\pemain_103012400217.cpp
 	<iostream>
+	"header.h"
 
-1764846896 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\pemain_103012430039.cpp
+1765101585 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\pemain_103012430039.cpp
 	<iostream>
-	"pemain.h"
+	"header.h"
 
-1763945139 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\turnamen_103012400217.cpp
+1765087951 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\turnamen_103012400217.cpp
+	<iostream>
+	"header.h"
 
-1763945139 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\turnamen_103012430039.cpp
+1765099699 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\turnamen_103012430039.cpp
+	<iostream>
+	"header.h"
 
 1764827939 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\akun.cpp
 	<iostream>
@@ -22,5 +26,8 @@
 	<string>
 
 1764836141 c:\users\rktho\tugas-besar-if4806-kelompok_13\pemain.h
+	<string>
+
+1765098149 c:\users\rktho\tugas-besar-if4806-kelompok_13\header.h
 	<string>
 

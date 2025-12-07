@@ -1,53 +1,54 @@
 #include <iostream>
-#include "turnamen.h"
+#include "header.h"
 
 using namespace std;
+void deleteAllPemain(adrTurnamen p){
 
-void createListTurnamen( ListTurnamen &L){
-    L.first = nullptr;
-}
-bool isEmptyTurnamen( ListTurnamen L){
-    return L.first==nullptr;
-}
-adrTurnamen createElemenTurnamen(Turnamen x){
-    adrTurnamen p = new elmTurnamen;
-
-    p->info.namaTurnamen = x.namaTurnamen;
-    p->info.lokasi = x.lokasi;
-    p->info.tanggalMulai = x.tanggalMulai;
-    p->info.tanggalSelesai = x.tanggalSelesai;
-    p->info.tahun = x.tahun;
-    p->info.kategori = x.kategori;
-    p->next = nullptr;
+    adrPemain q = p->firstPemain;
+    while (q!= nullptr){
+        q = q->next;
+    }
     p->firstPemain = nullptr;
-
-    return p;
 }
-void insertFirstTurnamen(ListTurnamen &L, adrTurnamen p){
-    if (isEmptyTurnamen(L)){
-        L.first=p;
+void deleteFirstTurnamen(ListTurnamen &L, adrTurnamen &p){
+    if(isEmptyTurnamen(L)){
+        p = nullptr;
+    }else if (L.first->next == nullptr){
+        p = L.first;
+        deleteAllPemain(p);
+        L.first = nullptr;
     }else{
-        p->next = L.first;
-        L.first = p;
+        p = L.first;
+        deleteAllPemain(p);
+        L.first = p->next;
+        p->next = nullptr;
     }
 }
-void insertLastTurnamen(ListTurnamen &L, adrTurnamen p){
-    if (isEmptyTurnamen(L)){
-        L.first = p;
+void deleteLastTurnamen(ListTurnamen &L, adrTurnamen &p){
+    if(isEmptyTurnamen(L)){
+        p = nullptr;
+    }else if (L.first->next == nullptr){
+        p = L.first;
+        deleteAllPemain(p);
+        L.first = nullptr;
     }else{
         adrTurnamen q = L.first;
-        while(q->next!= nullptr){
+        while (q->next->next != nullptr){
             q = q->next;
         }
-        q->next = p;
+        p = q->next;
+        deleteAllPemain(p);
+        q->next = nullptr;
     }
 }
-void insertAfterTurnamen(ListTurnamen &L,adrTurnamen prec, adrTurnamen p){
-    if (prec == nullptr){
-        cout<< "List Kosong"<<endl;
+void deleteAfterTurnamen(ListTurnamen &L, adrTurnamen prec, adrTurnamen &p){
+    if (prec == nullptr || prec->next == nullptr){
+        p = nullptr;
     }else{
-        p->next = prec->next;
-        prec->next = p;
+        p = prec->next;
+        deleteAllPemain(p);
+        prec->next = p->next;
+        p->next = nullptr;
     }
 }
 adrTurnamen searchTurnamenByNama(ListTurnamen L, string namaTurnamen){
@@ -60,22 +61,40 @@ adrTurnamen searchTurnamenByNama(ListTurnamen L, string namaTurnamen){
     }
     return nullptr;
 }
-adrTurnamen searchTurnamenByKategori(ListTurnamen L, string kategori){
+adrTurnamen searchTurnamenByTahun(ListTurnamen L, int tahun){
     adrTurnamen p = L.first;
-    while(p!=nullptr){
-        if (p->info.kategori== kategori){
+    while (p!= nullptr){
+        if(p->info.tahun == tahun){
             return p;
         }
         p = p->next;
     }
     return nullptr;
 }
-
-adrTurnamen searchTurnamenByTahun(ListTurnamen L, int tahun){}
-void insertTurnamenByTahun(ListTurnamen &L, adrTurnamen p){}
-void deleteTurnamenByNama(ListTurnamen &L, string namaTurnamen){}
-
-int hitungJumlahTurnamen(ListTurnamen L){}
-int hitungTurnamenByTahun(ListTurnamen L, int tahun){}
-
-void displayTurnamen(ListTurnamen L){}
+int hitungPemainPadaTurnamen(adrTurnamen p){
+    int jumlah = 0;
+    adrPemain q = p->firstPemain;
+    while (q!= nullptr){
+        jumlah++;
+        q =q->next;
+    }
+    return jumlah;
+}
+void displayTurnamen(ListTurnamen L){
+    if (isEmptyTurnamen(L)){
+        cout << "Belum ada turnamen.\n";
+    } else {
+        adrTurnamen p = L.first;
+        cout << "\n=== Daftar Turnamen ===\n";
+        while (p != nullptr){
+            cout << "Nama        : " << p->info.namaTurnamen << "\n";
+            cout << "Lokasi      : " << p->info.lokasi << "\n";
+            cout << "Tanggal Mulai: " << p->info.tanggalMulai << "\n";
+            cout << "Tanggal Selesai: " << p->info.tanggalSelesai << "\n";
+            cout << "Tahun       : " << p->info.tahun << "\n";
+            cout << "Kategori    : " << p->info.kategori << "\n";
+            cout << "-----------------------------\n";
+            p = p->next;
+        }
+    }
+}

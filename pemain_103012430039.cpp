@@ -1,25 +1,79 @@
 #include <iostream>
-#include "pemain.h"
+#include "header.h"
 
 using namespace std;
+void deleteFirstPemain(adrTurnamen &T, adrPemain &P){
+    if (isEmptyPemain(T)){
+         P = nullptr;
+    }
+    else if (T->firstPemain == T->lastPemain){
+        P = T->firstPemain;
+        T->firstPemain = nullptr;
+        T->lastPemain = nullptr;
+        P->next = nullptr;
+        P->prev = nullptr;
+    }
+    else {
+        P = T->firstPemain;
+        T->firstPemain = P->next;
+        T->firstPemain->prev = nullptr;
+        P->next = nullptr;
+        P->prev = nullptr;
+    }
+}
+void deleteLastPemain(adrTurnamen &T, adrPemain &P){
+    if (isEmptyPemain(T)){
+         P = nullptr;
+    }
+    else if (T->firstPemain == T->lastPemain){
+        P = T->firstPemain;
+        T->firstPemain = nullptr;
+        T->lastPemain = nullptr;
+        P->next = nullptr;
+        P->prev = nullptr;
+    }
+    else {
+        P = T->lastPemain;
+        T->lastPemain = P->prev;
+        T->lastPemain->next = nullptr;
+        P->prev = nullptr;
+        P->next = nullptr;
+    }
+}
+void deleteAfterPemain(adrTurnamen &T, adrPemain prec, adrPemain &P){
 
-void insertAfterPemain(ListPemain &L, adrPemain prec, adrPemain P){
-    if (prec == nullptr || L.first == nullptr){
-        cout << "List Kosong!" <<endl;
-    }else{
-        P->next = prec->next;
-        P->prev = prec;
-        prec->next->prev = P;
-        prec->next =P;
-    }
-}
-void deleteAfterPemain(ListPemain &L, adrPemain prec, adrPemain &P){
-    if (prec == nullptr || prec->next == nullptr){
+    if (isEmptyPemain(T) || prec == nullptr || prec->next == nullptr){
         P = nullptr;
-    }else{
-        P->next = prec->next;
-        P->prev = prec;
-        prec->next->prev = P;
-        prec->next =P;
+    }
+    else {
+        P = prec->next;
+        prec->next = P->next;
+
+        if (P->next != nullptr){
+            P->next->prev = prec;
+        }
+        if (P == T->lastPemain){
+            T->lastPemain = prec;
+        }
+        P->next = nullptr;
+        P->prev = nullptr;
     }
 }
+// pemain hanya boleh ikut satu turnamen per tahun
+bool sudahIkutTahunIni(ListTurnamen L, string idPemain, int tahun){
+    adrTurnamen t = L.first;
+    while (t != nullptr){
+        if (t->info.tahun == tahun){
+            adrPemain q = t->firstPemain;
+            while (q != nullptr){
+                if (q->idPemain == idPemain){
+                    return true;
+                }
+                q = q->next;
+            }
+        }
+        t = t->next;
+    }
+    return false;
+}
+
