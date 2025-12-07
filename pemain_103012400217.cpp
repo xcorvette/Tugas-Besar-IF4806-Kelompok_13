@@ -80,7 +80,7 @@ void deletePemainByID(adrTurnamen &T, string id){
             cout << "ID tidak ditemukan.\n";
         }
         else if (P == T->firstPemain){
-            deleteFirstPemain(T, throwaway);
+            deleteFirstPemasin(T, throwaway);
         }
         else if (P == T->lastPemain){
             deleteLastPemain(T, throwaway);
