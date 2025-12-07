@@ -11,21 +11,28 @@ struct pemain {
     string nama;
     int score;
     adrPemain next;
+    adrPemain prev;
 };
 
 struct ListPemain {
     adrPemain first;
+    adrPemain last;
 };
 
-// FUNCTION PROTOTYPES
-void createListPemain_103012400217(ListPemain &L);
-adrPemain createElmPemain_103012400217(string id, string nama, int score);
-void insertFirstPemain_103012400217(ListPemain &L, adrPemain P);
-void insertLastPemain_103012400217(ListPemain &L, adrPemain P);
-void deleteFirstPemain_103012400217(ListPemain &L);
-void deleteLastPemain_103012400217(ListPemain &L);
-void deletePemainByID_103012400217(ListPemain &L, string id);
-adrPemain findPemain_103012400217(ListPemain L, string id);
-void printPemain_103012400217(ListPemain L);
+void createListPemain(ListPemain &L);
+adrPemain createElmPemain(string id, string nama, int score);
+
+void insertFirstPemain(ListPemain &L, adrPemain P);
+void insertLastPemain(ListPemain &L, adrPemain P);
+void insertAfterPemain(ListPemain &L, adrPemain prec, adrPemain P);
+
+void deleteFirstPemain(ListPemain &L, adrPemain &P);
+void deleteLastPemain(ListPemain &L, adrPemain &P);
+void deleteAfterPemain(ListPemain &L, adrPemain prec, adrPemain &P);
+
+void deletePemainByID(ListPemain &L, string id);
+adrPemain findPemain(ListPemain L, string id);
+
+void printPemain(ListPemain L);
 
 #endif

@@ -1,6 +1,9 @@
-#ifndef TURNAMEN_H_INCLUDED
+
 #define TURNAMEN_H_INCLUDED
+
 #include <string>
+#include "pemain.h"
+
 using namespace std;
 
 typedef struct elmTurnamen *adrTurnamen;
