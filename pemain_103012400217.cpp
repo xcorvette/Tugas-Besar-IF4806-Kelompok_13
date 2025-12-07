@@ -26,34 +26,23 @@ void insertFirstPemain(adrTurnamen &T, adrPemain P){
     }
 }
 void insertLastPemain(adrTurnamen &T, adrPemain P){
-    if (T == nullptr){
-        cout << "Turnamen null. InsertLastPemain dibatalkan.\n";
+    if (isEmptyPemain(T)){
+        T->firstPemain = P;
+        T->lastPemain = P;
     } else {
-        if (isEmptyPemain(T)){
-            T->firstPemain = P;
-            T->lastPemain = P;
-        } else {
-            T->lastPemain->next = P;
-            P->prev = T->lastPemain;
-            T->lastPemain = P;
-        }
+        P->prev = T->lastPemain;
+        T->lastPemain->next = P;
+        T->lastPemain = P;
     }
 }
 void insertAfterPemain(adrTurnamen &T, adrPemain prec, adrPemain P){
-     if (isEmptyPemain(T) || prec == nullptr){
-        cout << "List pemain kosong atau prec tidak valid!\n";
+    if (prec == nullptr || isEmptyPemain(T)){
+        cout << "List pemain kosong" << endl;
     } else {
         P->next = prec->next;
         P->prev = prec;
-
-        if (prec->next != nullptr){
-            prec->next->prev = P;
-        }
+        prec->next->prev = P;
         prec->next = P;
-
-        if (prec == T->lastPemain){
-            T->lastPemain = P;
-        }
     }
 }
 adrPemain findPemain(adrTurnamen &T, string id){
@@ -80,7 +69,7 @@ void deletePemainByID(adrTurnamen &T, string id){
             cout << "ID tidak ditemukan.\n";
         }
         else if (P == T->firstPemain){
-            deleteFirstPemasin(T, throwaway);
+            deleteFirstPemain(T, throwaway);
         }
         else if (P == T->lastPemain){
             deleteLastPemain(T, throwaway);

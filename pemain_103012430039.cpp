@@ -10,8 +10,6 @@ void deleteFirstPemain(adrTurnamen &T, adrPemain &P){
         P = T->firstPemain;
         T->firstPemain = nullptr;
         T->lastPemain = nullptr;
-        P->next = nullptr;
-        P->prev = nullptr;
     }
     else {
         P = T->firstPemain;
@@ -29,8 +27,6 @@ void deleteLastPemain(adrTurnamen &T, adrPemain &P){
         P = T->firstPemain;
         T->firstPemain = nullptr;
         T->lastPemain = nullptr;
-        P->next = nullptr;
-        P->prev = nullptr;
     }
     else {
         P = T->lastPemain;
@@ -41,25 +37,22 @@ void deleteLastPemain(adrTurnamen &T, adrPemain &P){
     }
 }
 void deleteAfterPemain(adrTurnamen &T, adrPemain prec, adrPemain &P){
-
     if (isEmptyPemain(T) || prec == nullptr || prec->next == nullptr){
         P = nullptr;
+    }
+    else if (prec->next == T->lastPemain){
+        P = T->lastPemain;
+        deleteLastPemain(T, P);
     }
     else {
         P = prec->next;
         prec->next = P->next;
-
-        if (P->next != nullptr){
-            P->next->prev = prec;
-        }
-        if (P == T->lastPemain){
-            T->lastPemain = prec;
-        }
+        P->next->prev = prec;
         P->next = nullptr;
         P->prev = nullptr;
     }
 }
-// pemain hanya boleh ikut satu turnamen per tahun
+
 bool sudahIkutTahunIni(ListTurnamen L, string idPemain, int tahun){
     adrTurnamen t = L.first;
     while (t != nullptr){
