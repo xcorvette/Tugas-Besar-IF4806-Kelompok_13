@@ -49,7 +49,12 @@ void menuRegistrasi(ListAkun &LA) {
 
 
 // LOGIN
+<<<<<<< HEAD
 adrAkun menuLogin(ListAkun &LA, ListTurnamen &LT) {
+=======
+
+void menuLogin(ListAkun &LA, ListTurnamen &LT) {
+>>>>>>> c8aa98cce96ae9c3cba4b031bfab09002cbefa3d
     string u, p;
     cout << "\n=== LOGIN ===\n";
     cout << "Username: "; cin >> u;
@@ -59,7 +64,11 @@ adrAkun menuLogin(ListAkun &LA, ListTurnamen &LT) {
 
     if (acc == nullptr) {
         cout << ">> Login gagal! Username/password salah.\n";
+<<<<<<< HEAD
         return nullptr;
+=======
+        return;
+>>>>>>> c8aa98cce96ae9c3cba4b031bfab09002cbefa3d
     }
 
     cout << "\n>> Login sebagai [" << acc->role << "]\n";
@@ -68,8 +77,11 @@ adrAkun menuLogin(ListAkun &LA, ListTurnamen &LT) {
         adminMenu(LT, LA);
     else
         userMenu(LT);
+<<<<<<< HEAD
 
     return acc;
+=======
+>>>>>>> c8aa98cce96ae9c3cba4b031bfab09002cbefa3d
 }
 
 // ADMIN
@@ -263,7 +275,11 @@ int main() {
         }
 
         else if (pilih == 2) {
+<<<<<<< HEAD
             adrAkun acc = menuLogin(LA, LT);
+=======
+            adrAkun acc = menuLogin(LA);
+>>>>>>> c8aa98cce96ae9c3cba4b031bfab09002cbefa3d
 
             if (acc != nullptr) {
                 if (acc->role == "admin")
@@ -280,7 +296,10 @@ int main() {
     } while (pilih != 0);
 
     cout << "Keluar...\n";
+<<<<<<< HEAD
 
+=======
+>>>>>>> c8aa98cce96ae9c3cba4b031bfab09002cbefa3d
     return 0;
 }
 
