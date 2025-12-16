@@ -41,3 +41,22 @@ adrAkun login(ListAkun LA, string username, string password) {
     }
     return nullptr;
 }
+adrAkun menuLogin(ListAkun &LA) {
+    string username, password;
+
+    cout << "\n===== LOGIN =====\n";
+    cout << "Username: ";
+    cin >> username;
+    cout << "Password: ";
+    cin >> password;
+
+    adrAkun acc = login(LA, username, password);
+
+    if (acc == nullptr) {
+        cout << ">> Login gagal! Username atau password salah.\n";
+    } else {
+        cout << ">> Login berhasil sebagai [" << acc->role << "]\n";
+    }
+
+    return acc;
+}
