@@ -43,14 +43,6 @@ void insertAfterTurnamen(ListTurnamen &L,adrTurnamen prec, adrTurnamen p);
 void deleteFirstTurnamen(ListTurnamen &L, adrTurnamen &p);
 void deleteLastTurnamen(ListTurnamen &L, adrTurnamen &p);
 void deleteAfterTurnamen(ListTurnamen &L, adrTurnamen prec, adrTurnamen &p);
-
-//FUNGSI KONDISI
-adrTurnamen searchTurnamenByNama(ListTurnamen L, string namaTurnamen);
-adrTurnamen searchTurnamenByTahun(ListTurnamen L, int tahun);
-void deleteAllPemain(adrTurnamen p);
-
-int hitungPemainPadaTurnamen(adrTurnamen p);
-
 void displayTurnamen(ListTurnamen L);
 
 //FUNGSI DASAR PEMAIN
@@ -63,10 +55,13 @@ void deleteFirstPemain(adrTurnamen &T, adrPemain &P);
 void deleteLastPemain(adrTurnamen &T, adrPemain &P);
 void deleteAfterPemain(adrTurnamen &T, adrPemain prec, adrPemain &P);
 adrPemain findPemain(adrTurnamen &T, string id);
-//FUNGSI KONDISI
-void deletePemainByID(adrTurnamen &T, string id);
 
+//FUNGSI KONDISI
+adrTurnamen searchTurnamenByNama(ListTurnamen L, string namaTurnamen);
+adrTurnamen searchTurnamenByTahun(ListTurnamen L, int tahun);
+void deleteAllPemain(adrTurnamen p);
+int hitungPemainPadaTurnamen(adrTurnamen p);
+void deletePemainByID(adrTurnamen &T, string id);
 void printPemain(adrTurnamen T);
-//validasi
 bool sudahIkutTahunIni(ListTurnamen L, string idPemain, int tahun);
 #endif
