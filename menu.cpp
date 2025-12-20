@@ -335,12 +335,13 @@ void menuUser(ListTurnamen &L){
         // ================= VIEW =================
         if (pilih == 1) {
             displayTurnamen(L);
-        }
-
-        else if (pilih == 2) {
-            cout << "Masukkan Tahun Turnamen: ";
+            cout << "\nTekan ENTER untuk kembali ke menu...";
             cin.ignore(1000, '\n');
-            getline(cin, tahun);
+            cin.get();
+        }
+        else if (pilih == 2) {
+            int tahun;
+            cin >> tahun;
             T = searchTurnamenByTahun(L, tahun);
             if (T != nullptr) {
                 cout << "Turnamen ditemukan:" << endl;
@@ -368,11 +369,13 @@ void menuUser(ListTurnamen &L){
             cout << "Nama Turnamen: ";
             cin.ignore(1000, '\n');
             getline(cin, namaTurnamen);
+
             T = searchTurnamenByNama(L, namaTurnamen);
 
             if (T != nullptr) {
                 cout << "Cari ID Pemain: ";
                 cin >> id;
+
                 P = findPemain(T, id);
                 if (P != nullptr) {
                     cout << "ID    : " << P->idPemain << endl;
@@ -384,8 +387,10 @@ void menuUser(ListTurnamen &L){
             } else {
                 cout << "Turnamen tidak ditemukan\n";
             }
+            cout << "\nTekan ENTER untuk kembali ke menu...";
+            cin.ignore(1000, '\n');
+            cin.get();
         }
-
         else if (pilih == 0) {
             cout << "Kembali ke main menu\n";
         }
