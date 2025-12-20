@@ -1,10 +1,10 @@
 # depslib dependency file v1.0
-1765943340 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\main.cpp
+1766205567 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\main.cpp
 	<iostream>
 	"header.h"
 	"menu.h"
 
-1765105547 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\pemain_103012400217.cpp
+1766204492 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\pemain_103012400217.cpp
 	<iostream>
 	"header.h"
 
@@ -30,15 +30,15 @@
 1764836141 c:\users\rktho\tugas-besar-if4806-kelompok_13\pemain.h
 	<string>
 
-1765942810 c:\users\rktho\tugas-besar-if4806-kelompok_13\header.h
+1766204492 c:\users\rktho\tugas-besar-if4806-kelompok_13\header.h
 	<string>
 
-1765943432 c:\users\rktho\tugas-besar-if4806-kelompok_13\menu.h
+1765944102 c:\users\rktho\tugas-besar-if4806-kelompok_13\menu.h
 	<iostream>
 	<string>
 	"header.h"
 
-1765943340 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\menu.cpp
+1766206793 source:c:\users\rktho\tugas-besar-if4806-kelompok_13\menu.cpp
 	<iostream>
 	"menu.h"
 

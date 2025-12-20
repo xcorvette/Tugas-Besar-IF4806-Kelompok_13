@@ -4,9 +4,9 @@
 
 using namespace std;
 
-<<<<<<< HEAD
+
 void insertDummyData(ListTurnamen &L) {
-    // ===== TURNAMEN 1 =====
+    // TURNAMEN 1
     Turnamen t1;
     t1.namaTurnamen = "Indonesia Open";
     t1.lokasi = "Jakarta";
@@ -22,7 +22,7 @@ void insertDummyData(ListTurnamen &L) {
     insertLastPemain(T1, createElmPemain("P02", "Jojo", 90));
     insertLastPemain(T1, createElmPemain("P03", "Fajar", 88));
 
-    // ===== TURNAMEN 2 =====
+    //  TURNAMEN 2
     Turnamen t2;
     t2.namaTurnamen = "All England";
     t2.lokasi = "Birmingham";
@@ -38,7 +38,7 @@ void insertDummyData(ListTurnamen &L) {
     insertLastPemain(T2, createElmPemain("P05", "LeeZiiJia", 87));
     insertLastPemain(T2, createElmPemain("P06", "Momota", 89));
 
-    // ===== TURNAMEN 3 =====
+    //  TURNAMEN 3
     Turnamen t3;
     t3.namaTurnamen = "Japan Open";
     t3.lokasi = "Tokyo";
@@ -59,16 +59,7 @@ int main() {
     ListTurnamen L;
     int pilih = 1;
     createListTurnamen(L);
-
     insertDummyData(L);
-
-=======
-int main() {
-    ListTurnamen L;
-    int pilih = 1;
-    createListTurnamen(L);
-
->>>>>>> 5770288 (nambah)
     while (pilih != 0) {
         cout << "=================================================\n";
         cout << "|  SISTEM MANAJEMEN TURNAMEN BADMINTON TAHUNAN  |\n";
@@ -82,24 +73,17 @@ int main() {
 
         if (pilih == 1) {
             menuAdmin(L);
-        }
-        else if (pilih == 2) {
+        }else if (pilih == 2) {
             menuUser(L);
-        }
-        else if (pilih == 0) {
+        }else if (pilih == 0) {
             cout << "Keluar dari program...\n";
-        }
-        else {
+        }else {
             cout << "Pilihan tidak valid!\n";
         }
 
         cout << endl;
     }
-
     cout << "Program selesai.\n";
     return 0;
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 5770288 (nambah)
