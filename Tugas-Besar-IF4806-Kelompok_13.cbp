@@ -34,6 +34,8 @@
 		</Compiler>
 		<Unit filename="header.h" />
 		<Unit filename="main.cpp" />
+		<Unit filename="menu.cpp" />
+		<Unit filename="menu.h" />
 		<Unit filename="pemain_103012400217.cpp" />
 		<Unit filename="pemain_103012430039.cpp" />
 		<Unit filename="turnamen_103012400217.cpp" />
