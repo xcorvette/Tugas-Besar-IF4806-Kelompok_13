@@ -4,6 +4,7 @@
 
 using namespace std;
 
+<<<<<<< HEAD
 void insertDummyData(ListTurnamen &L) {
     // ===== TURNAMEN 1 =====
     Turnamen t1;
@@ -61,6 +62,13 @@ int main() {
 
     insertDummyData(L);
 
+=======
+int main() {
+    ListTurnamen L;
+    int pilih = 1;
+    createListTurnamen(L);
+
+>>>>>>> 5770288 (nambah)
     while (pilih != 0) {
         cout << "=================================================\n";
         cout << "|  SISTEM MANAJEMEN TURNAMEN BADMINTON TAHUNAN  |\n";
@@ -90,4 +98,8 @@ int main() {
 
     cout << "Program selesai.\n";
     return 0;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 5770288 (nambah)
