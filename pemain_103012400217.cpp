@@ -4,7 +4,7 @@
 using namespace std;
 
 bool isEmptyPemain(adrTurnamen T){
-  return (T->firstPemain == nullptr);
+    return (T == nullptr || T->firstPemain == nullptr);
 }
 adrPemain createElmPemain(string id, string nama, int score){
     adrPemain P = new pemain;
@@ -38,7 +38,11 @@ void insertLastPemain(adrTurnamen &T, adrPemain P){
 void insertAfterPemain(adrTurnamen &T, adrPemain prec, adrPemain P){
     if (prec == nullptr || isEmptyPemain(T)){
         cout << "List pemain kosong" << endl;
-    } else {
+    }
+    else if (prec == T->lastPemain) {
+        insertLastPemain(T, P);
+    }
+    else {
         P->next = prec->next;
         P->prev = prec;
         prec->next->prev = P;

@@ -42,3 +42,36 @@
 	<iostream>
 	"menu.h"
 
+1766152566 source:c:\users\white\onedrive\tugas-besar-if4806-kelompok_13\tugas-besar-if4806-kelompok_13\menu.cpp
+	<iostream>
+	"menu.h"
+
+1766144561 c:\users\white\onedrive\tugas-besar-if4806-kelompok_13\tugas-besar-if4806-kelompok_13\menu.h
+	<iostream>
+	<string>
+	"header.h"
+
+1766147137 c:\users\white\onedrive\tugas-besar-if4806-kelompok_13\tugas-besar-if4806-kelompok_13\header.h
+	<string>
+
+1766152588 source:c:\users\white\onedrive\tugas-besar-if4806-kelompok_13\tugas-besar-if4806-kelompok_13\pemain_103012400217.cpp
+	<iostream>
+	"header.h"
+
+1766147137 source:c:\users\white\onedrive\tugas-besar-if4806-kelompok_13\tugas-besar-if4806-kelompok_13\pemain_103012430039.cpp
+	<iostream>
+	"header.h"
+
+1766147137 source:c:\users\white\onedrive\tugas-besar-if4806-kelompok_13\tugas-besar-if4806-kelompok_13\turnamen_103012400217.cpp
+	<iostream>
+	"header.h"
+
+1765448984 source:c:\users\white\onedrive\tugas-besar-if4806-kelompok_13\tugas-besar-if4806-kelompok_13\turnamen_103012430039.cpp
+	<iostream>
+	"header.h"
+
+1766151207 source:c:\users\white\onedrive\tugas-besar-if4806-kelompok_13\tugas-besar-if4806-kelompok_13\main.cpp
+	<iostream>
+	"header.h"
+	"menu.h"
+
