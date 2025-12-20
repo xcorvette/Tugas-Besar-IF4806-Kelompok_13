@@ -103,12 +103,21 @@ void menuTurnamen(ListTurnamen &L){
         }else if (pilih == 7) {
             cout << "Cari tahun: ";
             cin >> tahun;
-            p = searchTurnamenByTahun(L, tahun);
-            if (p != nullptr){
-                cout << "Ditemukan: " << p->info.namaTurnamen << endl;
-            }else{
-                cout << "Tidak ditemukan\\n";
+
+            adrTurnamen P = L.first;
+            bool ketemu = false;
+
+            while (P != nullptr) {
+                if (P->info.tahun == tahun) {
+                    cout << "- " << P->info.namaTurnamen << endl;
+                    ketemu = true;
+                }
+                P = P->next;
             }
+            if (!ketemu) {
+            cout << "Tidak ditemukan\n";
+            }
+
         }else if (pilih == 8) {
             displayTurnamen(L);
         }else if (pilih == 0) {
@@ -147,7 +156,6 @@ void menuPemain(ListTurnamen &L){
             cout << "Nama Turnamen: ";
             cin.ignore(1000, '\n');
             getline(cin, namaTurnamen);
-            cin >> namaTurnamen;
             T = searchTurnamenByNama(L, namaTurnamen);
             if (T != nullptr) {
                 cout << "ID Pemain   : "; cin >> id;
@@ -171,7 +179,6 @@ void menuPemain(ListTurnamen &L){
             cout << "Nama Turnamen: ";
             cin.ignore(1000, '\n');
             getline(cin, namaTurnamen);
-            cin >> namaTurnamen;
             T = searchTurnamenByNama(L, namaTurnamen);
 
             if (T != nullptr) {
@@ -195,7 +202,6 @@ void menuPemain(ListTurnamen &L){
             cout << "Nama Turnamen: ";
             cin.ignore(1000, '\n');
             getline(cin, namaTurnamen);
-            cin >> namaTurnamen;
             T = searchTurnamenByNama(L, namaTurnamen);
 
             if (T != nullptr) {
@@ -227,7 +233,6 @@ void menuPemain(ListTurnamen &L){
             cout << "Nama Turnamen: ";
             cin.ignore(1000, '\n');
             getline(cin,namaTurnamen);
-            cin >> namaTurnamen;
             T = searchTurnamenByNama(L, namaTurnamen);
 
             if (T != nullptr) {
@@ -244,7 +249,6 @@ void menuPemain(ListTurnamen &L){
             cout << "Nama Turnamen: ";
             cin.ignore(1000, '\n');
             getline(cin,namaTurnamen);
-            cin >> namaTurnamen;
             T = searchTurnamenByNama(L, namaTurnamen);
 
             if (T != nullptr) {
@@ -261,7 +265,6 @@ void menuPemain(ListTurnamen &L){
             cout << "Nama Turnamen: ";
             cin.ignore(1000, '\n');
             getline(cin,namaTurnamen);
-            cin >> namaTurnamen;
             T = searchTurnamenByNama(L, namaTurnamen);
 
             if (T != nullptr) {
@@ -285,7 +288,6 @@ void menuPemain(ListTurnamen &L){
             cout << "Nama Turnamen: ";
             cin.ignore(1000, '\n');
             getline(cin,namaTurnamen);
-            cin >> namaTurnamen;
             T = searchTurnamenByNama(L, namaTurnamen);
             if (T != nullptr) {
                 cout << "Cari ID Pemain: ";
@@ -306,7 +308,6 @@ void menuPemain(ListTurnamen &L){
             cout << "Nama Turnamen: ";
             cin.ignore(1000, '\n');
             getline(cin,namaTurnamen);
-            cin >> namaTurnamen;
             T = searchTurnamenByNama(L, namaTurnamen);
             if (T != nullptr)
                 printPemain(T);
