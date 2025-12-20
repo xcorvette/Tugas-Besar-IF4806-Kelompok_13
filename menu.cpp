@@ -57,7 +57,6 @@ void menuTurnamen(ListTurnamen &L){
             inputDataTurnamen(x);
             p = createElemenTurnamen(x);
             insertLastTurnamen(L, p);
-<<<<<<< HEAD
         }else if (pilih == 3) {
             cout << "Insert setelah turnamen bernama: ";
             cin.ignore(1000, '\n');
@@ -71,18 +70,6 @@ void menuTurnamen(ListTurnamen &L){
                 cout << "Turnamen berhasil ditambahkan.\n";
             } else {
                 cout << "Turnamen tidak ditemukan\n";
-=======
-        }else if (pilih == 3){
-            cout <<"Insert setelah turnamen bernama : ";
-            cin >> nama;
-            prec = searchTurnamenByNama(L,nama);
-            if (prec != nullptr){
-                inputDataTurnamen(x);
-                p = createElemenTurnamen(x);
-                insertAfterTurnamen(L, prec, p);
-            }else{
-                cout <<"Turnamen tidak ditemukan";
->>>>>>> 5770288 (nambah)
             }
         }else if (pilih == 4) {
             deleteFirstTurnamen(L, p);
@@ -100,7 +87,6 @@ void menuTurnamen(ListTurnamen &L){
             }
         }else if (pilih == 6) {
             cout << "Delete setelah turnamen bernama: ";
-<<<<<<< HEAD
             cin.ignore(1000, '\n');
             getline(cin, nama);
 
@@ -112,14 +98,6 @@ void menuTurnamen(ListTurnamen &L){
                 << p->info.namaTurnamen
                 << " berhasil dihapus";
             } else {
-=======
-            cin >> nama;
-            prec = searchTurnamenByNama(L, nama);
-            deleteAfterTurnamen(L, prec, p);
-            if (p != nullptr){
-                cout << "Turnamen dengan nama: "<< p->info.namaTurnamen <<" berhasil dihapus";
-            }else{
->>>>>>> 5770288 (nambah)
                 cout << "Tidak ada turnamen setelahnya";
             }
         }else if (pilih == 7) {
@@ -167,19 +145,13 @@ void menuPemain(ListTurnamen &L){
 
         if (pilih == 1) {
             cout << "Nama Turnamen: ";
-<<<<<<< HEAD
             cin.ignore(1000, '\n');
             getline(cin, namaTurnamen);
-
-=======
-            cin >> namaTurnamen;
->>>>>>> 5770288 (nambah)
             T = searchTurnamenByNama(L, namaTurnamen);
             if (T != nullptr) {
                 cout << "ID Pemain   : "; cin >> id;
                 cout << "Nama Pemain : "; cin >> nama;
                 cout << "Score       : "; cin >> score;
-<<<<<<< HEAD
                 if (sudahIkutTahunIni(L, id, T->info.tahun)) {
                     cout << "Pemain sudah mengikuti turnamen lain di tahun yang sama!\n";
                 } else {
@@ -187,29 +159,20 @@ void menuPemain(ListTurnamen &L){
                     insertFirstPemain(T, P);
                     cout << "Pemain berhasil ditambahkan.\n";
                 }
-=======
-                P = createElmPemain(id, nama, score);
-                insertFirstPemain(T, P);
->>>>>>> 5770288 (nambah)
             } else {
                 cout << "Turnamen tidak ditemukan\n";
             }
         }
         else if (pilih == 2) {
             cout << "Nama Turnamen: ";
-<<<<<<< HEAD
             cin.ignore(1000, '\n');
             getline(cin, namaTurnamen);
-=======
-            cin >> namaTurnamen;
->>>>>>> 5770288 (nambah)
             T = searchTurnamenByNama(L, namaTurnamen);
 
             if (T != nullptr) {
                 cout << "ID Pemain   : "; cin >> id;
                 cout << "Nama Pemain : "; cin >> nama;
                 cout << "Score       : "; cin >> score;
-<<<<<<< HEAD
                 if (sudahIkutTahunIni(L, id, T->info.tahun)) {
                     cout << "Pemain sudah mengikuti turnamen lain di tahun yang sama!\n";
                 } else {
@@ -217,22 +180,14 @@ void menuPemain(ListTurnamen &L){
                     insertLastPemain(T, P);
                     cout << "Pemain berhasil ditambahkan.\n";
                 }
-=======
-                P = createElmPemain(id, nama, score);
-                insertLastPemain(T, P);
->>>>>>> 5770288 (nambah)
             } else {
                 cout << "Turnamen tidak ditemukan\n";
             }
         }
         else if (pilih == 3) {
             cout << "Nama Turnamen: ";
-<<<<<<< HEAD
             cin.ignore(1000, '\n');
             getline(cin, namaTurnamen);
-=======
-            cin >> namaTurnamen;
->>>>>>> 5770288 (nambah)
             T = searchTurnamenByNama(L, namaTurnamen);
 
             if (T != nullptr) {
@@ -244,7 +199,6 @@ void menuPemain(ListTurnamen &L){
                     cout << "ID Pemain   : "; cin >> id;
                     cout << "Nama Pemain : "; cin >> nama;
                     cout << "Score       : "; cin >> score;
-<<<<<<< HEAD
                     if (sudahIkutTahunIni(L, id, T->info.tahun)) {
                         cout << "Pemain sudah mengikuti turnamen lain di tahun yang sama!\n";
                     } else {
@@ -252,10 +206,6 @@ void menuPemain(ListTurnamen &L){
                         insertAfterPemain(T, prec, P);
                         cout << "Pemain berhasil ditambahkan.\n";
                     }
-=======
-                    P = createElmPemain(id, nama, score);
-                    insertAfterPemain(T, prec, P);
->>>>>>> 5770288 (nambah)
                 } else {
                     cout << "Pemain tidak ditemukan\n";
                 }
@@ -265,12 +215,8 @@ void menuPemain(ListTurnamen &L){
         }
         else if (pilih == 4) {
             cout << "Nama Turnamen: ";
-<<<<<<< HEAD
             cin.ignore(1000, '\n');
             getline(cin,namaTurnamen);
-=======
-            cin >> namaTurnamen;
->>>>>>> 5770288 (nambah)
             T = searchTurnamenByNama(L, namaTurnamen);
 
             if (T != nullptr) {
@@ -285,12 +231,8 @@ void menuPemain(ListTurnamen &L){
         }
         else if (pilih == 5) {
             cout << "Nama Turnamen: ";
-<<<<<<< HEAD
             cin.ignore(1000, '\n');
             getline(cin,namaTurnamen);
-=======
-            cin >> namaTurnamen;
->>>>>>> 5770288 (nambah)
             T = searchTurnamenByNama(L, namaTurnamen);
 
             if (T != nullptr) {
@@ -305,12 +247,8 @@ void menuPemain(ListTurnamen &L){
         }
         else if (pilih == 6) {
             cout << "Nama Turnamen: ";
-<<<<<<< HEAD
             cin.ignore(1000, '\n');
             getline(cin,namaTurnamen);
-=======
-            cin >> namaTurnamen;
->>>>>>> 5770288 (nambah)
             T = searchTurnamenByNama(L, namaTurnamen);
 
             if (T != nullptr) {
@@ -334,12 +272,8 @@ void menuPemain(ListTurnamen &L){
         // ================= SEARCH & PRINT =================
         else if (pilih == 7) {
             cout << "Nama Turnamen: ";
-<<<<<<< HEAD
             cin.ignore(1000, '\n');
             getline(cin,namaTurnamen);
-=======
-            cin >> namaTurnamen;
->>>>>>> 5770288 (nambah)
             T = searchTurnamenByNama(L, namaTurnamen);
 
             if (T != nullptr) {
@@ -359,12 +293,8 @@ void menuPemain(ListTurnamen &L){
         }
         else if (pilih == 8) {
             cout << "Nama Turnamen: ";
-<<<<<<< HEAD
             cin.ignore(1000, '\n');
             getline(cin,namaTurnamen);
-=======
-            cin >> namaTurnamen;
->>>>>>> 5770288 (nambah)
             T = searchTurnamenByNama(L, namaTurnamen);
             if (T != nullptr)
                 printPemain(T);
@@ -404,19 +334,13 @@ void menuUser(ListTurnamen &L){
         // ================= VIEW =================
         if (pilih == 1) {
             displayTurnamen(L);
-<<<<<<< HEAD
             cout << "\nTekan ENTER untuk kembali ke menu...";
             cin.ignore(1000, '\n');
             cin.get();
-        }
-        else if (pilih == 2) {
-            int tahun;
-=======
-        }
-
+        } 
+        
         else if (pilih == 2) {
             cout << "Masukkan Tahun Turnamen: ";
->>>>>>> 5770288 (nambah)
             cin >> tahun;
             T = searchTurnamenByTahun(L, tahun);
             if (T != nullptr) {
@@ -431,12 +355,8 @@ void menuUser(ListTurnamen &L){
 
         else if (pilih == 3) {
             cout << "Nama Turnamen: ";
-<<<<<<< HEAD
             cin.ignore(1000, '\n');
             getline(cin, namaTurnamen);
-=======
-            cin >> namaTurnamen;
->>>>>>> 5770288 (nambah)
             T = searchTurnamenByNama(L, namaTurnamen);
             if (T != nullptr) {
                 printPemain(T);
@@ -447,22 +367,13 @@ void menuUser(ListTurnamen &L){
 
         else if (pilih == 4) {
             cout << "Nama Turnamen: ";
-<<<<<<< HEAD
             cin.ignore(1000, '\n');
             getline(cin, namaTurnamen);
-
-=======
-            cin >> namaTurnamen;
->>>>>>> 5770288 (nambah)
             T = searchTurnamenByNama(L, namaTurnamen);
 
             if (T != nullptr) {
                 cout << "Cari ID Pemain: ";
                 cin >> id;
-<<<<<<< HEAD
-
-=======
->>>>>>> 5770288 (nambah)
                 P = findPemain(T, id);
                 if (P != nullptr) {
                     cout << "ID    : " << P->idPemain << endl;
@@ -474,15 +385,10 @@ void menuUser(ListTurnamen &L){
             } else {
                 cout << "Turnamen tidak ditemukan\n";
             }
-<<<<<<< HEAD
             cout << "\nTekan ENTER untuk kembali ke menu...";
             cin.ignore(1000, '\n');
             cin.get();
         }
-=======
-        }
-
->>>>>>> 5770288 (nambah)
         else if (pilih == 0) {
             cout << "Kembali ke main menu\n";
         }
@@ -494,8 +400,6 @@ void menuUser(ListTurnamen &L){
         cout << endl;
     }
 }
-<<<<<<< HEAD
-
 void inputDataTurnamen(Turnamen &x) {
     cin.ignore(1000, '\n');
 
@@ -518,19 +422,4 @@ void inputDataTurnamen(Turnamen &x) {
 
     cout << "Kategori        : ";
     getline(cin, x.kategori);
-=======
-void inputDataTurnamen(Turnamen &x) {
-    cout << "Nama Turnamen   : ";
-    cin >> x.namaTurnamen;
-    cout << "Lokasi          : ";
-    cin >> x.lokasi;
-    cout << "Tanggal Mulai   : ";
-    cin >> x.tanggalMulai;
-    cout << "Tanggal Selesai : ";
-    cin >> x.tanggalSelesai;
-    cout << "Tahun           : ";
-    cin >> x.tahun;
-    cout << "Kategori        : ";
-    cin >> x.kategori;
->>>>>>> 5770288 (nambah)
 }
